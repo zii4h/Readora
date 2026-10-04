@@ -1,0 +1,23 @@
+READORA — RUN ON YOUR WINDOWS LAPTOP
+
+1. Install Node.js 24 LTS if you do not have it.
+2. Extract this ZIP. Open the readora folder in VS Code.
+3. Open Terminal > New Terminal (PowerShell).
+4. Run these commands:
+
+   npm install
+   Copy-Item .env.example .env
+   npm run dev
+
+5. Open http://localhost:5173 in your browser.
+
+DEMO ACCOUNTS
+Username: learner    / Password: ReadoraDemo123!
+Username: supervisor / Password: ReadoraDemo123!
+Username: admin      / Password: ReadoraDemo123!
+
+Your records save to .data/readora.sqlite on your laptop.
+To stop: press Ctrl+C in the terminal.
+To run again: npm run dev
+
+Read README.md for the feature guide and Vercel deployment instructions.
