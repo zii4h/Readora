@@ -4,6 +4,11 @@
 
 Readora is a gamified reading comprehension platform designed to help learners develop their comprehension skills through short, structured reading exercises. It provides section-based questions with immediate feedback, tracks performance across four comprehension skills, and recommends exercises based on the learner's reading level and areas that need improvement.
 
+## Preview
+<img width="1886" height="905" alt="Image" src="https://github.com/user-attachments/assets/ace40050-6729-40ae-a1a8-487784ad835c" />
+
+<img width="1886" height="900" alt="Image" src="https://github.com/user-attachments/assets/dde644b1-3d9f-4c71-85aa-94e2f880deb8" />
+
 ## Features
 
 | Role | Features |
@@ -20,6 +25,19 @@ The system evaluates learners' reading comprehension based on four core skills:
 - Vocabulary in Context
 - Main Idea
 - Inference
+
+## DEMO ACCOUNTS
+
+The following accounts are available when demo accounts have been seeded.
+
+| Role | Username | Password |
+| --- | --- | --- |
+| Learner | `learner` | `ReadoraDemo123!` |
+| Supervisor | `supervisor` | `ReadoraDemo123!` |
+| Administrator | `admin` | `ReadoraDemo123!` |
+
+> [!IMPORTANT]
+> Demo accounts are publicly accessible and share the same data. Changes made by users may affect others. Avoid entering sensitive information.
 
 ## TECH STACK
 
@@ -97,19 +115,6 @@ npm run dev
 ```
 
 Open **http://localhost:5173** in your browser.
-
-## DEMO ACCOUNTS
-
-The following accounts are available when demo accounts have been seeded.
-
-| Role | Username | Password |
-| --- | --- | --- |
-| Learner | `learner` | `ReadoraDemo123!` |
-| Supervisor | `supervisor` | `ReadoraDemo123!` |
-| Administrator | `admin` | `ReadoraDemo123!` |
-
-> [!IMPORTANT]
-> Demo accounts are publicly accessible and share the same data. Changes made by users may affect others. Avoid entering sensitive information.
 
 ## BUILD & TESTING
 
