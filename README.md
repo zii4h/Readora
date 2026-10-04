@@ -38,12 +38,15 @@ npm run dev
 
 Open **http://localhost:5173**. The backend uses port 3001. The first local start creates `.data/readora.sqlite` and seeds sample content. The supplied `.env.example` enables local demo accounts:
 
+## DEMO ACCOUNTS:
+The following accounts are available for testing Readora's role-based features.
 | Username   | Password        | Role          |
 | ---------- | --------------- | ------------- |
 | learner    | ReadoraDemo123! | Learner       |
 | supervisor | ReadoraDemo123! | Supervisor    |
 | admin      | ReadoraDemo123! | Administrator |
-
+> [!IMPORTANT]
+> Demo accounts are publicly accessible and share the same data. Changes made by users may affect others.
 On macOS/Linux, use `cp .env.example .env` instead of `Copy-Item`.
 
 You can register fresh learners and supervisors from the interface. Administrative roles are provisioned through database setup, never public registration. Do not use demo accounts for a public deployment.
