@@ -243,9 +243,9 @@ function App() {
             <Leaf size={23} />
             <strong>A little every day.</strong>
             <p>
-              Small reading moments.
+              Final Project for 6IMSOFTENG
               <br />
-              Deeper understanding.
+            
             </p>
           </div>
           {session ? (
@@ -756,26 +756,45 @@ function Guest({ onStart, onBrowse, exercises, onOpen }) {
       </Heading>
       <section className="hero guest-hero">
         <div className="hero-copy">
-          <span className="hero-label">
+          {/* <span className="hero-label">
             <Sparkles size={15} /> MEANINGFUL PRACTICE, SMALL STEPS
-          </span>
-          <h2>
+          </span> */}
+          {/* <h2>
             Go beyond
             <br />
             the last page.
-          </h2>
-          <p>
-            Pause. Think. Read between the lines.
-            <br />
-            Short passages, thoughtful questions, and a clearer picture of how
-            you’re growing.
-          </p>
+          </h2> */}
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "6px",
+  }}
+>
+  <Leaf
+    size={28}
+    strokeWidth={1.8}
+    style={{ transform: "translateY(-5px)" }}
+    aria-hidden="true"
+  />
+
+  <p>
+    <strong style={{ fontSize: "1.15em", textDecoration: "underline" }}>
+      Readora
+    </strong>{" "}
+    is a gamified reading comprehension system that helps learners practice
+    through short passages and guided questions. It tracks performance across
+    four comprehension skills and recommends exercises based on each learner’s
+    progress.
+  </p>
+</div>
           <button className="button cream" onClick={onStart}>
             Find your starting point <ArrowRight size={17} />
           </button>
-          <span className="hero-foot">
+          {/* <span className="hero-foot">
             Four comprehension skills. Your own pace.
-          </span>
+          </span> */}
         </div>
         <BookArt />
       </section>
@@ -1061,6 +1080,7 @@ function ExerciseCard({ e, index, onOpen, completed }) {
     <button className="exercise-card" onClick={() => onOpen(e)}>
       <div className={"card-art art-" + (index % 3)}>
         <div className="art-lines" />
+
         {index % 3 === 0 ? (
           <Compass size={64} strokeWidth={1} />
         ) : index % 3 === 1 ? (
@@ -1068,13 +1088,16 @@ function ExerciseCard({ e, index, onOpen, completed }) {
         ) : (
           <Sun size={64} strokeWidth={1} />
         )}
+
         <span className="category">{e.category}</span>
+
         {completed && (
           <span className="completed-mark">
             <Check size={15} /> Completed
           </span>
         )}
       </div>
+
       <div className="card-content">
         <div className="spread">
           <span className={"tag " + e.level.toLowerCase()}>{e.level}</span>
@@ -1114,7 +1137,7 @@ function Catalog({ exercises, onOpen }) {
   return (
     <>
       <Heading title="The Reading Shelf">
-        Short exercises. Four skills. Every level open to you.
+        
       </Heading>
       <div className="catalog-toolbar">
         <label className="search">
