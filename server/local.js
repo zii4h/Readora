@@ -4,7 +4,7 @@ import path from "node:path";
 import handler from "./api.js";
 import { setup } from "./setup.js";
 if (!process.env.DATABASE_URL)
-  await setup({ demo: process.env.DEMO_SEED === "1" });
+  await setup({ demo: true });
 const mime = {
   ".html": "text/html",
   ".js": "text/javascript",
