@@ -1,174 +1,149 @@
-# Readora
+# 🌿 Readora
 
 **A little reading. A deeper understanding.**
 
-Readora is a working initial gamified reading comprehension system. Its core learning unit is a passage split into sections with questions and immediate explanatory feedback. It includes real server-side accounts, role permissions, persistent records, and an administrator content editor.
+Readora is a gamified reading comprehension platform designed to help learners develop their comprehension skills through short, structured reading exercises. It provides section-based questions with immediate feedback, tracks performance across four comprehension skills, and recommends exercises based on the learner's reading level and areas that need improvement.
 
-The name combines **read** with a short, memorable ending. It is a proposed project name, not a verified trademark or domain reservation.
+## Features
 
-## What is included
+| Role | Features |
+| --- | --- |
+| **GUEST** | Browse the reading catalog and view exercise details |
+| **LEARNER** | Complete reading exercises, track comprehension skills, earn XP and achievements, and receive recommendations |
+| **SUPERVISOR** | Connect with learners, review progress, and assign exercises |
+| **ADMINISTRATOR** | Create, edit, publish, and manage reading materials and assessments |
 
-| Role          | Working features                                                                                                                                                                                              |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Guest         | Browse and filter the public catalog; inspect exercise details                                                                                                                                                |
-| Learner       | Register/sign in, take the baseline, complete section-based multiple-choice exercises, resume unfinished work, review results, track four skills, receive recommendations, earn XP and permanent achievements |
-| Supervisor    | Register/sign in, connect using a learner-issued code, view connected learners' skill scores/history, assign exercises with due dates and notes, remove assignments or connections                            |
-| Administrator | Sign in, create/edit/delete exercises, manage sections/questions/options/answer keys/feedback, save drafts or publish, maintain the baseline                                                                  |
+### Four Comprehension Skills
+The system evaluates learners' reading comprehension based on four core skills:
 
-Six original exercises across three levels and one eight-question baseline are included. No passage extraction or external content API is required. Sample content is illustrative practice material, not a validated standardized assessment.
+- Literal Understanding
+- Vocabulary in Context
+- Main Idea
+- Inference
 
-## Stack
+## TECH STACK
 
-- React + Vite frontend, responsive CSS, Lucide icons.
-- Node.js backend exposed as one Vercel function at `/api/handler`.
-- SQLite for local development, using Node's built-in SQLite driver.
-- PostgreSQL for hosted multi-user persistence, using `pg`.
-- Opaque HTTP-only session cookies; salted scrypt password hashes; server-side scoring and authorization.
-- No browser-local database or fake role switcher. Different accounts use the same server database.
+- **Frontend:** React, Vite, CSS, Lucide
+- **Backend:** Node.js
+- **Database:** SQLite (local) / Supabase PostgreSQL (hosted)
+- **Deployment:** Vercel
 
-## Run locally — Windows PowerShell
+## RUNNING LOCALLY
+### Prerequisites
 
-Install Node.js **24 LTS** (or a supported Node release >=22.13). Extract this folder and open a terminal in it.
+- Node.js 24 LTS (or a supported version 22.13+)
+- npm
+- Git
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/zii4h/Readora.git
+cd Readora
+npm install
+```
+
+### 2. Configure environment variables
+
+Create a `.env` file from the provided template.
+
+**Windows (PowerShell):**
 
 ```powershell
-npm install
 Copy-Item .env.example .env
+```
+
+**macOS / Linux:**
+
+```bash
+cp .env.example .env
+```
+
+---
+The application supports two database configurations.
+
+**Option A — SQLite (local only)**
+
+Leave `DATABASE_URL` unset in `.env`. Readora will use a local SQLite database and initialize it automatically on the first run.
+
+**Option B — Supabase PostgreSQL**
+
+For a PostgreSQL database, configure the following in `.env`:
+
+```dotenv
+DATABASE_URL=your_supabase_connection_string
+DEMO_SEED=1
+ADMIN_USERNAME=admin
+ADMIN_NAME=Administrator
+ADMIN_PASSWORD=your_secure_password
+```
+
+Then initialize the database:
+
+```bash
+npm run db:setup
+```
+
+> [!IMPORTANT]
+> - Replace `DATABASE_URL` with your own Supabase PostgreSQL connection string.
+> - Keep `DEMO_SEED=1` to enable demo accounts, or set it to `0` to disable demo account seeding.
+> - Optionally, customize `ADMIN_USERNAME` and `ADMIN_NAME`.
+> - Set a secure `ADMIN_PASSWORD` with at least 12 characters.
+
+### 3. Run the application
+
+```bash
 npm run dev
 ```
 
-Open **http://localhost:5173**. The backend uses port 3001. The first local start creates `.data/readora.sqlite` and seeds sample content. The supplied `.env.example` enables local demo accounts:
+Open **http://localhost:5173** in your browser.
 
-## DEMO ACCOUNTS:
-The following accounts are available for testing Readora's role-based features.
-| Username   | Password        | Role          |
-| ---------- | --------------- | ------------- |
-| learner    | ReadoraDemo123! | Learner       |
-| supervisor | ReadoraDemo123! | Supervisor    |
-| admin      | ReadoraDemo123! | Administrator |
+## DEMO ACCOUNTS
+
+The following accounts are available when demo accounts have been seeded.
+
+| Role | Username | Password |
+| --- | --- | --- |
+| Learner | `learner` | `ReadoraDemo123!` |
+| Supervisor | `supervisor` | `ReadoraDemo123!` |
+| Administrator | `admin` | `ReadoraDemo123!` |
+
 > [!IMPORTANT]
-> Demo accounts are publicly accessible and share the same data. Changes made by users may affect others.
-On macOS/Linux, use `cp .env.example .env` instead of `Copy-Item`.
+> Demo accounts are publicly accessible and share the same data. Changes made by users may affect others. Avoid entering sensitive information.
 
-You can register fresh learners and supervisors from the interface. Administrative roles are provisioned through database setup, never public registration. Do not use demo accounts for a public deployment.
+## BUILD & TESTING
 
-### Demo walkthrough
-
-1. Sign in as `learner`; complete the baseline.
-2. Complete an exercise. Check results, My progress, and Achievements.
-3. Repeat that exercise: comprehension changes, XP does not increase.
-4. Open My supervisors and generate a connection code.
-5. Open a separate browser/private window, sign in as `supervisor`, and enter that code.
-6. Assign an exercise, then return to the learner account and complete it. The supervisor sees it marked completed.
-7. Sign in as `admin` in another browser context. Use Content manager to create a passage with sections and multiple-choice questions, then publish it.
-8. Refresh the learner catalog to see the new exercise.
-
-### Build and test
-
-```powershell
+```bash
 npm test
 npm run build
 npm start
 ```
 
-The last command serves the built app at **http://localhost:3001** using the local SQLite database. `npm run dev` is the normal development command. `npm run preview` previews static assets only and is not the full-system test server.
+The production build is served locally at **http://localhost:3001**.
 
-## Host on Vercel with PostgreSQL
 
-Vercel hosting requires a hosted PostgreSQL database; SQLite is intentionally blocked on Vercel because local function files are not the system's durable database.
+## LEARNING & PROGRESS
 
-1. Create a PostgreSQL database with your chosen provider. Obtain its server-side pooled connection string and preserve the provider's TLS parameters.
-2. In your local `.env`, set the following. Replace the marked placeholders with real values:
+Readora measures comprehension performance using the learner's completed assessments.
 
-```dotenv
-DATABASE_URL=YOUR_POSTGRESQL_CONNECTION_STRING
-DEMO_SEED=0
-ADMIN_USERNAME=readora_admin
-ADMIN_NAME=Readora Administrator
-ADMIN_PASSWORD=YOUR_UNIQUE_PASSWORD_OF_AT_LEAST_12_CHARACTERS
-```
+**Skill Performance = (Correct Answers / Total Questions Answered) × 100**
 
-3. Initialize this remote database once:
+Reading levels are determined from cumulative performance after the baseline assessment:
 
-```powershell
-npm run db:setup
-```
+| Performance | Reading Level |
+| --- | --- |
+| Below 50% | Beginner |
+| 50% to below 75% | Intermediate |
+| 75% and above | Advanced |
 
-This creates the schema, seeds content only when the exercise table is empty, and creates the administrator if its username is not already taken. It does not overwrite existing accounts, passwords, or edited content. Use a fresh administrator username on a new deployment. `server/schema.sql` is also supplied as a schema reference; running only that SQL does not seed content or create the administrator.
+Learners earn XP through the baseline and first-time exercise completions. Recommendations prioritize their current reading level and lowest-performing comprehension skill.
 
-4. Push the source to your own Git repository. Keep `.env`, `.data`, and `node_modules` out of Git; `.gitignore` already covers them.
-5. Import the repository into Vercel. Use the folder containing `package.json` as the root directory. Set:
+## SCOPE
 
-| Setting                      | Value                                                  |
-| ---------------------------- | ------------------------------------------------------ |
-| Framework                    | Vite                                                   |
-| Build command                | `npm run build`                                        |
-| Output directory             | `dist`                                                 |
-| Node.js                      | 24.x                                                   |
-| Runtime environment variable | `DATABASE_URL` = the same PostgreSQL connection string |
+Readora is an initial working system developed for academic purposes. It supports reading exercises, comprehension assessments, learner progress tracking, supervisor assignments, and content management.
 
-6. Deploy. The `api/handler.js` entry serves backend requests. `vercel.json` includes API routing. Page navigation uses URL hashes, so refreshes do not require separate page-route rewrites.
-7. Sign in using the administrator created in step 3, register a learner and supervisor, and repeat the demo flow with real accounts.
+Current limitations include no password recovery, email verification, automated question generation, or file uploads. The included practice materials are not standardized assessments.
 
-The admin setup password is needed only on your computer for step 3; the deployed app uses the stored hash. **Never prefix `DATABASE_URL` with `VITE_`** or put it in frontend files. Keep credentials out of your public repository.
+## LICENSE
 
-Use a separate database for preview deployments if you do not want test actions to affect production data. Place your function and database in nearby regions where possible.
-
-Official deployment references:
-
-- https://vercel.com/docs/frameworks/frontend/vite
-- https://vercel.com/docs/functions/runtimes/node-js
-
-No Vercel project or external database has been provisioned by this package.
-
-## Learning rules implemented
-
-- Four skills: Literal Understanding, Vocabulary in Context, Main Idea, Inference.
-- Skill performance = correct answers / all questions answered for that skill **in completed activities** × 100.
-- Overall performance = total correct / total questions across all completed activities.
-- Baseline and repeated exercises count in comprehension scores. Incomplete attempts do not count.
-- Reading level remains **Not Assessed** until the learner completes the baseline, then follows cumulative performance: below 50% Beginner; 50% to below 75% Intermediate; 75% and above Advanced.
-- Displayed percentages are rounded; level cutoffs and weakest-skill comparisons use unrounded ratios.
-- Recommendations match current level and include the lowest-performing measured skill. Ties use the listed skill order, and uncompleted exercises are preferred. If no match exists, the dashboard clearly falls back to the general catalog.
-- The catalog remains open across all levels.
-- Baseline: 50 XP. First completion of each distinct exercise: 30 XP. Repeated completions: 0 XP.
-- Player level = 1 + floor(total XP / 100). XP never changes comprehension scores.
-- Milestones remain earned even if later scores decrease.
-- Completing an assigned exercise after the assignment was created marks it done. A prior completion does not fulfill a newly assigned repeat.
-
-## Data and implementation notes
-
-The schema contains `users`, `sessions`, `exercises`, `attempts`, `rewards`, `achievements`, `invitations`, `connections`, `assignments`, and `rate_limits`.
-
-Exercises store their nested sections/questions as JSON text. Attempts keep independent snapshots and submitted-answer records. Admin edits do not rewrite existing attempts. Deleting an exercise removes its catalog entry but preserves history, XP, and the ability to resume existing attempts. Learners see an unavailable marker for an assignment whose exercise was removed or unpublished.
-
-Finishing an attempt runs in a database transaction. A learner-row lock serializes learner submissions on PostgreSQL. A unique `(user_id, exercise_id)` reward key prevents duplicate XP, even across repeat attempts. Local SQLite requests are serialized through transactions.
-
-Supervisor connections require a learner-generated, expiring, one-use code. Disconnecting removes the connection and its assignments. Supervisors cannot browse unrelated accounts or alter scores. Administrators manage educational content; the UI does not expose individual learner records to them.
-
-All question validation, grading, role checks, and data ownership checks occur on the server. Answer keys are omitted from public catalogs and unsubmitted question responses. Expected answers and explanations are disclosed after submission for learning feedback.
-
-## Initial MVP boundaries
-
-- Username/password sign-in; no email verification, self-service password reset, OAuth, or MFA yet.
-- No bulk classroom management, file uploads, AI-generated questions, or automated licensed-text ingestion.
-- No email/push deadline reminders or real-time background updates; revisit/refresh a page for changes made by another account.
-- No account deletion/export interface or formal content approval workflow yet.
-- Question content is English only. These exercises are not normed for an age or school grade.
-- Login rate limiting is a basic per-IP-and-username control, not a full abuse prevention service.
-- This delivery validates the local runtime. The actual hosted PostgreSQL/Vercel deployment must be smoke-tested after you supply infrastructure.
-
-## Project files
-
-| Location               | Purpose                                                |
-| ---------------------- | ------------------------------------------------------ |
-| `src/main.jsx`         | Role-based interface, reading flow, editor             |
-| `src/styles.css`       | Responsive visual design                               |
-| `server/api.js`        | Authentication, permissions, scoring, all workflows    |
-| `server/db.js`         | SQLite/PostgreSQL transaction adapters and schema      |
-| `server/content.js`    | Original sample passages and question bank             |
-| `server/setup.js`      | Database initialization and administrator provisioning |
-| `api/handler.js`       | Vercel backend entry point                             |
-| `tests/system.test.js` | Integration and scoring tests                          |
-| `vercel.json`          | Hosting configuration                                  |
-
-The project rubric concerns a separate paper. This package delivers the initial system and its implementation guide, not a completed academic paper.
+See [MIT License](https://github.com/zii4h/Readora/blob/main/LICENSE) © 2026 [zii4h](https://github.com/zii4h).
