@@ -512,6 +512,7 @@ input[type="radio"] {
   right: 14px;
   bottom: 44px;
 }
+
 .art-ground {
   position: absolute;
   bottom: 20px;
@@ -653,27 +654,62 @@ input[type="radio"] {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
+
 .exercise-card {
-  background: rgb(201, 216, 207);
+  padding: 6px 6px 0;
+  background: #c5d4b7e1;
   border: 1px solid #dce6c9;
   border-radius: 16px;
   overflow: hidden;
 }
+
 .exercise-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px #354c3010;
 }
-.card-art {
-  height: 135px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 
-  border-radius: 16px 16px 0 0;
+.card-art {
+  height: 150px;
+  position: relative;
+  display: grid;
+  place-items: center;
   overflow: hidden;
+  border-radius: 11px 11px 0 0;
 }
+
+.card-art > svg {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  z-index: 2;
+  opacity: 0.3;
+  transform: translate(-50%, -50%) !important;
+}
+
+.art-lines {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: 50% !important;
+  left: 50% !important;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.20;
+  transform: translate(-50%, -50%) !important;
+}
+
+.art-lines::after {
+  content: "";
+  position: absolute;
+  width: 185px;
+  height: 185px;
+  top: 50% !important;
+  left: 50% !important;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) !important;
+}
+
 .art-0 {
   background: #ddf5da;
   color: #668872;
@@ -686,27 +722,7 @@ input[type="radio"] {
   background: #e1e8e8;
   color: #668b8c;
 }
-.art-lines {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  border: 1px solid currentColor;
-  opacity: 0.14;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.art-lines:after {
-  content: "";
-  width: 185px;
-  height: 185px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  position: absolute;
-  top: 25px;
-  left: 25px;
-}
+
 .category { 
   position: absolute;
   left: 15px;

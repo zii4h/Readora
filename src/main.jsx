@@ -1150,7 +1150,7 @@ function Catalog({ exercises, onOpen }) {
           />
         </label>
         <select
-          aria-label="Filter by reading level"
+          aria-label="Filter by reading level" 
           value={level}
           onChange={(e) => setLevel(e.target.value)}
         >

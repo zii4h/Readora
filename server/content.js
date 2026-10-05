@@ -379,6 +379,7 @@ export const seedExercises = [
       ),
     ],
   ),
+  
   exercise(
     "repair-cafe",
     "Saturday at the repair café",
