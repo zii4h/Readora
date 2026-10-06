@@ -1,0 +1,81 @@
+{
+  "work": "Three hundred Aesop’s fables",
+  "author": "Aesop",
+  "translator": "George Fyler Townsend (1814–1900)",
+  "sourceUrl": "https://www.gutenberg.org/ebooks/21",
+  "retrieved": "2026-10-05",
+  "sha256": "48f2d310226e175250988747ba4c81ff832a218b83c141b38c6dc047a25c1958",
+  "changes": "Whitespace normalized and passages split into two sections; wording and punctuation preserved.",
+  "passages": [
+    {
+      "id": "lion-mouse",
+      "title": "The Lion And The Mouse",
+      "startLine": 880,
+      "endLine": 891,
+      "sections": [
+        "A LION was awakened from sleep by a Mouse running over his face. Rising up angrily, he caught him and was about to kill him, when the Mouse piteously entreated, saying: “If you would only spare my life, I would be sure to repay your kindness.” The Lion laughed and let him go.",
+        "It happened shortly after this that the Lion was caught by some hunters, who bound him by strong ropes to the ground. The Mouse, recognizing his roar, came and gnawed the rope with his teeth, and set him free, exclaiming:\n\n“You ridiculed the idea of my ever being able to help you, not expecting to receive from me any repayment of your favour; now you know that it is possible for even a Mouse to confer benefits on a Lion.”"
+      ]
+    },
+    {
+      "id": "hare-tortoise",
+      "title": "The Hare and the Tortoise",
+      "startLine": 1052,
+      "endLine": 1063,
+      "sections": [
+        "A HARE one day ridiculed the short feet and slow pace of the Tortoise, who replied, laughing: “Though you be swift as the wind, I will beat you in a race.” The Hare, believing her assertion to be simply impossible, assented to the proposal; and they agreed that the Fox should choose the course and fix the goal.",
+        "On the day appointed for the race the two started together. The Tortoise never for a moment stopped, but went on with a slow but steady pace straight to the end of the course. The Hare, lying down by the wayside, fell fast asleep. At last waking up, and moving as fast as he could, he saw the Tortoise had reached the goal, and was comfortably dozing after her fatigue.\n\nSlow but steady wins the race."
+      ]
+    },
+    {
+      "id": "crow-pitcher",
+      "title": "The Crow and the Pitcher",
+      "startLine": 3968,
+      "endLine": 3976,
+      "sections": [
+        "A CROW perishing with thirst saw a pitcher, and hoping to find water, flew to it with delight. When he reached it, he discovered to his grief that it contained so little water that he could not possibly get at it. He tried everything he could think of to reach the water, but all his efforts were in vain.",
+        "At last he collected as many stones as he could carry and dropped them one by one with his beak into the pitcher, until he brought the water within his reach and thus saved his life.\n\nNecessity is the mother of invention."
+      ]
+    },
+    {
+      "id": "fox-crow",
+      "title": "The Fox and the Crow",
+      "startLine": 2432,
+      "endLine": 2441,
+      "sections": [
+        "A CROW having stolen a bit of meat, perched in a tree and held it in her beak. A Fox, seeing this, longed to possess the meat himself, and by a wily stratagem succeeded. “How handsome is the Crow,” he exclaimed, “in the beauty of her shape and in the fairness of her complexion! Oh, if her voice were only equal to her beauty, she would deservedly be considered the Queen of Birds!”",
+        "This he said deceitfully; but the Crow, anxious to refute the reflection cast upon her voice, set up a loud caw and dropped the flesh. The Fox quickly picked it up, and thus addressed the Crow: “My good Crow, your voice is right enough, but your wit is wanting.”"
+      ]
+    },
+    {
+      "id": "ants-grasshopper",
+      "title": "The Ants and the Grasshopper",
+      "startLine": 1038,
+      "endLine": 1044,
+      "sections": [
+        "THE ANTS were spending a fine winter’s day drying grain collected in the summertime. A Grasshopper, perishing with famine, passed by and earnestly begged for a little food. The Ants inquired of him, “Why did you not treasure up food during the summer?”",
+        "He replied, “I had not leisure enough. I passed the days in singing.” They then said in derision: “If you were foolish enough to sing all the summer, you must dance supperless to bed in the winter.”"
+      ]
+    },
+    {
+      "id": "oak-reeds",
+      "title": "The Oak and the Reeds",
+      "startLine": 2975,
+      "endLine": 2982,
+      "sections": [
+        "A VERY LARGE OAK was uprooted by the wind and thrown across a stream. It fell among some Reeds, which it thus addressed: “I wonder how you, who are so light and weak, are not entirely crushed by these strong winds.”",
+        "They replied, “You fight and contend with the wind, and consequently you are destroyed; while we on the contrary bend before the least breath of air, and therefore remain unbroken, and escape.”\n\nStoop to conquer."
+      ]
+    },
+    {
+      "id": "north-wind-sun",
+      "title": "The North Wind and the Sun",
+      "startLine": 4827,
+      "endLine": 4838,
+      "sections": [
+        "THE NORTH WIND and the Sun disputed as to which was the most powerful, and agreed that he should be declared the victor who could first strip a wayfaring man of his clothes. The North Wind first tried his power and blew with all his might, but the keener his blasts, the closer the Traveler wrapped his cloak around him, until at last, resigning all hope of victory, the Wind called upon the Sun to see what he could do.",
+        "The Sun suddenly shone out with all his warmth. The Traveler no sooner felt his genial rays than he took off one garment after another, and at last, fairly overcome with heat, undressed and bathed in a stream that lay in his path.\n\nPersuasion is better than Force."
+      ]
+    }
+  ]
+}

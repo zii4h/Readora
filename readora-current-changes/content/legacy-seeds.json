@@ -1,0 +1,44 @@
+[
+  {
+    "id": "baseline",
+    "title": "Your reading starting point",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "917586db1a4855df62b82957935305f8e63cbad41388500b9c131e8ca3510ae4"
+  },
+  {
+    "id": "last-bus",
+    "title": "The last bus home",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "954d076d2095ebdc728bbc2213237141c057514267f93ef393dc2a52d88caa40"
+  },
+  {
+    "id": "seed-library",
+    "title": "The seed library",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "8312e55d03619c4124ee0ce9d8ff61efea87df043c4c414d12e43efc6f6d2754"
+  },
+  {
+    "id": "lighthouse",
+    "title": "A light through the fog",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "aeaf9de3b7ec38554e794ff31c1881fa894d0443f2f303fb972525a7ca8ca6fd"
+  },
+  {
+    "id": "repair-cafe",
+    "title": "Saturday at the repair café",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "24ec2e52c6d053f7f240a4dd07afea6393e0eb01ba54a0fc9b12676db757b1d9"
+  },
+  {
+    "id": "river-data",
+    "title": "What the river numbers missed",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "956e1f117e77529973428e2e6ef68b2b0745e52f576854081136a6e10848d9e1"
+  },
+  {
+    "id": "quiet-square",
+    "title": "The quiet square",
+    "source": "Original passage written for Readora. Reusable with this project.",
+    "hash": "1dc82a52d681d4314e30e8e69ba83963b6e283d021349d616423e7efecf2ab11"
+  }
+]
