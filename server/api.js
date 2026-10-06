@@ -7,7 +7,7 @@ import {
 } from "node:crypto";
 import { transaction } from "./db.js";
 import { hashPassword } from "./setup.js";
-import { SKILLS } from "./content.js";
+import { SKILLS } from "./sourced-content.js";
 const now = () => new Date().toISOString();
 const digest = (x) => createHash("sha256").update(x).digest("hex");
 const fail = (message, status = 400) => {

@@ -1190,6 +1190,13 @@ input[type="radio"] {
   font-size: 12px;
   margin: 22px 0;
 }
+.source summary { display: flex; align-items: center; gap: 6px; cursor: pointer; width: fit-content; list-style: none; }
+.source summary::-webkit-details-marker { display: none; }
+.source summary svg { transition: transform 150ms ease; }
+.source[open] summary svg { transform: rotate(90deg); }
+.source p { line-height: 1.7; overflow-wrap: anywhere; }
+.source a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.source a:hover { color: #466331; }
 .modal h4 {
   font-size: 14px;
 }

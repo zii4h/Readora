@@ -4,3 +4,6 @@ dist/
 .env.local
 .data/
 *.log
+
+/readora-current-changes/
+/readora-current-changes.zip

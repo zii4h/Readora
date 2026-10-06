@@ -73,7 +73,7 @@ test("system workflow, permissions, scoring, and durable records", async (t) => 
     "guest catalog does not expose answers; private routes require auth",
     async () => {
       const r = await guest("catalog");
-      assert.equal(r.exercises.length, 6);
+      assert.equal(r.exercises.length, 8);
       assert.equal(JSON.stringify(r).includes("correct"), false);
       assert.equal((await guest("dashboard")).status, 401);
       assert.equal(
@@ -172,9 +172,9 @@ test("system workflow, permissions, scoring, and durable records", async (t) => 
   await t.test(
     "repeat attempts affect comprehension but never duplicate XP or revoke achievements",
     async () => {
-      const first = await complete(learner, "last-bus");
+      const first = await complete(learner, "carroll-curious-alice");
       assert.equal(first.xpEarned, 30);
-      const second = await complete(learner, "last-bus", false);
+      const second = await complete(learner, "carroll-curious-alice", false);
       assert.equal(second.xpEarned, 0);
       assert.equal(second.stats.xp, 80);
       assert.equal(second.stats.total, 16);
@@ -194,7 +194,7 @@ test("system workflow, permissions, scoring, and durable records", async (t) => 
         (
           await supervisor("assign", {
             learnerId,
-            exerciseId: "seed-library",
+            exerciseId: "aesop-hare-tortoise",
             dueDate: "2027-01-01",
           })
         ).status,
@@ -215,7 +215,7 @@ test("system workflow, permissions, scoring, and durable records", async (t) => 
         (
           await supervisor("assign", {
             learnerId,
-            exerciseId: "seed-library",
+            exerciseId: "aesop-hare-tortoise",
             dueDate: "2027-01-01",
             note: "Focus on inference",
           })
@@ -223,7 +223,7 @@ test("system workflow, permissions, scoring, and durable records", async (t) => 
         200,
       );
       assert.equal((await learner("dashboard")).assignments[0].done, false);
-      await complete(learner, "seed-library");
+      await complete(learner, "aesop-hare-tortoise");
       assert.equal((await supervisor("supervisor")).assignments[0].done, true);
       const sup = (await supervisor("session")).user.id;
       await learner("disconnect", { supervisorId: sup });
@@ -235,7 +235,7 @@ test("system workflow, permissions, scoring, and durable records", async (t) => 
     "admin CRUD preserves attempt snapshots; draft and deleted records leave public catalog",
     async () => {
       const all = await admin("admin");
-      const e = all.exercises.find((e) => e.id === "last-bus");
+      const e = all.exercises.find((e) => e.id === "carroll-curious-alice");
       const started = await learner("start", { exerciseId: e.id });
       assert.equal(
         (

@@ -36,6 +36,20 @@ import {
   Eye,
 } from "lucide-react";
 import "./styles.css";
+function SourceDisclosure({ source }) {
+  if (!source) return null;
+  const parts = source.split(/(https?:\/\/[^\s<>]+|\/sources\/[^\s<>]+)/g);
+  return (
+    <details className="source muted-text">
+      <summary><ChevronRight size={14} /> Sources & credits</summary>
+      <p>{parts.map((part, i) => {
+        if (!/^(https?:\/\/|\/sources\/)/.test(part)) return part;
+        const href = part.replace(/[.,;!?]+$/, "");
+        return <React.Fragment key={i}><a href={href} target="_blank" rel="noopener noreferrer">{href}</a>{part.slice(href.length)}</React.Fragment>;
+      })}</p>
+    </details>
+  );
+}
 const SKILLS = [
   "Literal Understanding",
   "Vocabulary in Context",
@@ -516,7 +530,7 @@ function App() {
               </span>
             ))}
           </div>
-          <p className="muted-text source">{detail.source}</p>
+          <SourceDisclosure source={detail.source} />
           {(!session || learner) && (
             <button
               className="button primary full"
@@ -1625,7 +1639,7 @@ function Reader({ attempt: a, busy, run, setAttempt, onExit, onFinish }) {
           </button>
         )}
       </div>
-      <p className="source muted-text">{a.source}</p>
+      <SourceDisclosure source={a.source} />
     </div>
   );
 }
