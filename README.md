@@ -102,6 +102,13 @@ Then initialize the database:
 npm run db:setup
 ```
 
+The API also initializes the schema and applies pending content migrations before
+its first valid request, including on Vercel. This updates recognized prototype
+activities to the sourced readings without replacing custom or edited activities,
+accounts, or saved attempts. Set `DATABASE_URL` in Vercel's production environment;
+the existing `npm run build` command stays unchanged. Concurrent serverless
+instances serialize initialization using a PostgreSQL transaction advisory lock.
+
 > [!IMPORTANT]
 > - Replace `DATABASE_URL` with your own Supabase PostgreSQL connection string.
 > - Keep `DEMO_SEED=1` to enable demo accounts, or set it to `0` to disable demo account seeding.

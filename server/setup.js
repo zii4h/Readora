@@ -7,6 +7,8 @@ export function hashPassword(password) {
 }
 export async function setup({ demo = false } = {}) {
   return transaction(async (db) => {
+    // Serialize setup across serverless instances sharing the same database.
+    if (db.remote) await db.query("SELECT pg_advisory_xact_lock(726324018)");
     for (const sql of schema) await db.query(sql);
     const migration = await migrateContent(db);
     if (migration.skipped.length)
@@ -41,4 +43,15 @@ export async function setup({ demo = false } = {}) {
         ],
       );
   });
+}
+
+let initialization;
+export function ensureDatabaseReady() {
+  if (!initialization) {
+    initialization = setup().catch((error) => {
+      initialization = undefined;
+      throw error;
+    });
+  }
+  return initialization;
 }

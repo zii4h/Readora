@@ -6,7 +6,7 @@ import {
   createHash,
 } from "node:crypto";
 import { transaction } from "./db.js";
-import { hashPassword } from "./setup.js";
+import { hashPassword, ensureDatabaseReady } from "./setup.js";
 import { SKILLS } from "./sourced-content.js";
 const now = () => new Date().toISOString();
 const digest = (x) => createHash("sha256").update(x).digest("hex");
@@ -749,6 +749,7 @@ export default async function handler(req, res) {
       )
     )
       fail("Use POST for this action.", 405);
+    await ensureDatabaseReady();
     const result = await transaction((db) => route(db, req, res, body));
     res.statusCode = result.status || 200;
     res.end(JSON.stringify(result));
